@@ -71,23 +71,4 @@ module.exports = {
       directory: "./database/seeds",
     },
   },
-
-
-  customenv: {
-    client: 'pg',
-    connection: {
-      host: "localhost",
-      port: 5432,
-      database: "postgres",
-      user: "postgres",
-      password: "LuLu123!",
-    },
-    useNullAsDefault: true,
-    migrations: {
-      directory: './database/migrations',
-      tableName: 'knex_migrations',
-    },
-    seeds: { directory: './database/seeds' },
-  },
-
 };

@@ -21,7 +21,6 @@ router.get("/", (req, res) => {
     });
 });
 
-//Need to write middleware to verify post id exists
 
 router.get("/:postId", validatePostId, (req, res) => {
   const postId = req.params.postId;
@@ -38,7 +37,6 @@ router.get("/:postId", validatePostId, (req, res) => {
     });
 });
 
-//Need to write middleware that verifies that User ID exists
 
 router.get("/user/:id", validateUserId, (req, res) => {
   const userId = req.params.id;
@@ -59,7 +57,6 @@ router.get("/user/:id", validateUserId, (req, res) => {
     });
 });
 
-//Need to write middleware to verify post is valid
 
 router.post("/", validatePost, (req, res) => {
   const post = req.body;
