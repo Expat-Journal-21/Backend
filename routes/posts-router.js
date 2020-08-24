@@ -58,11 +58,7 @@ router.post("/", validatePost, (req, res) => {
   db.insert(post)
     .then((newPost) => {
       
-      res.status(201).json({
-        newPost: {
-          newPost,
-        },
-      });
+      res.status(201).json(newPost);
     })
     .catch((err) => {
       res
