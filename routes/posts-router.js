@@ -66,7 +66,11 @@ router.post("/", validatePost, (req, res) => {
       let array = newPost.images.split(",");
       res.status(201).json({
         newPost: {
-          ...newPost,
+          id: newPost.id,
+          title: newPost.title,
+          description: newPost.description,
+          is_public: newPost.is_public,
+          user_id: newPost.user_id,
           images: array,
         },
       });
