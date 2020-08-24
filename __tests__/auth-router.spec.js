@@ -6,15 +6,32 @@ describe("Auth Routes", () => {
   const testUserRegister = {
     username: "New Test User",
     name: "Test",
-    email: "test123@email.com",
+    email: "test123123@email.com",
+    password: "1234"
+  };
+  const testUserRegister2 = {
+    username: "New Test User2",
+    name: "Test",
+    email: "test123123123@email.com",
     password: "1234"
   };
 
-  beforeEach(async () => {
-      await db("users").truncate()
-  })
+
+  beforeAll(async () => {
+    await db("posts").truncate()
+})
+
+beforeAll(async () => {
+    await db("users").truncate()
+})
+
+ 
 
   describe("POST /register", () => {
+
+    beforeAll(async () => {
+        await db("users").truncate()
+    })
       it("Should return 201", () => {
           return supertest(server)
           .post("/api/auth/register")

@@ -10,15 +10,34 @@ When the server is up it will respond with:
 message: "Server is running!"
 ```
 ---
+## Table of Contents
+
+- [User Routes/Authentication](#user-routes)
+    - [Register](#register-a-user) (POST)
+    - [Login](#login-as-a-user) (POST)
+- [Posts Routes](#post-routes-(authorization-token-**required**:))
+    - [GET](#get-all-posts)
+    - [GET by post ID](#get-post-by-post-ID)
+    - [GET by user ID](#get-post-by-user's-ID)
+    - [POST new post](#post-new-post)
+    - [UPDATE post](#update-post)
+    - [DELETE post](#delete-post)
+- [Public Routes](#public-routes)
+    - [GET](#get-all-public-posts)
+
+</br>
+
+
+---
 ## Test Accounts
 ```
 username: Test User
-email: test123@email.com
+email: testtest123@gmail.com
 password: 1234
 ```
 ```
 username: Test User2
-email: test1234@email.com
+email: testtest1234@gmail.com
 password: 1234
 ```
 ---
@@ -101,7 +120,7 @@ This will return an object:
 ---
 
 
-# Post Routes:
+# Post Routes (Authorization Token **Required**):
 
 
 ## GET all posts

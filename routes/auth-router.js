@@ -9,6 +9,12 @@ const {
 } = require("../middleware/users-middleware");
 const { signToken } = require("../helpers/auth-helpers");
 
+router.get("/", (req, res) => {
+  db.find().then((data) => {
+    res.status(200).json(data);
+  });
+});
+
 router.post("/register", validateUser, (req, res) => {
   const creds = req.body;
   const rounds = process.env.BCRYPT_ROUNDS || 10;
@@ -17,7 +23,14 @@ router.post("/register", validateUser, (req, res) => {
 
   db.insert(creds)
     .then((user) => {
-      res.status(201).json({ user: user });
+      res.status(201).json({
+        user: {
+          id: user.id,
+          name: user.name,
+          username: user.username,
+          email: user.email,
+        },
+      });
     })
     .catch((err) => {
       if (err.message.includes("UNIQUE constraint failed")) {
@@ -44,13 +57,15 @@ router.post("/login", validateUserLogin, (req, res) => {
     .then(([user]) => {
       if (user && bcryptjs.compareSync(password, user.password)) {
         const token = signToken(user);
-        res.status(200).json({ user: {
+        res.status(200).json({
+          user: {
             id: user.id,
+            name: user.name,
             username: user.username,
             email: user.email,
-        },
-        token:token 
-    });
+          },
+          token: token,
+        });
       } else {
         res.status(401).json({ message: "Invalid credentials " });
       }
