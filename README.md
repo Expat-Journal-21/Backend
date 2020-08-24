@@ -2,6 +2,7 @@
 
 ## API Base URL: 
 
+`https://expat-journal-21.herokuapp.com`
 ---
 ## Server Status
 **GET**: `/` </br>
