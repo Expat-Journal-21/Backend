@@ -31,7 +31,8 @@ function insert(post) {
     
     .insert(post)
     .then(ids => {
-        return findById(ids[0])
+        const id = ids[0]
+        return findById(id)
     })
 }
 
