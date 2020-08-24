@@ -78,7 +78,7 @@ module.exports = {
       port: 5432,
       database: "postgres",
       user: "postgres",
-      password: "LuLu123!",
+      password: process.env.LOCALDBPASS,
     },
     useNullAsDefault: true,
     migrations: {
