@@ -26,10 +26,10 @@ function findByIfPublic() {
     return db("posts").where("is_public", 1).orderBy("id")
 }
 
-function insert(post) {
-    return db("posts")
-    
-    .insert(post)
+function insert(post)  {
+    // console.log(post)
+   return db("posts").insert(post, 'id')
+
     .then(ids => {
         const id = ids[0]
         console.log(id)

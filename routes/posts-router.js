@@ -7,12 +7,9 @@ const { validatePostId, validatePost} = require("../middleware/posts-middleware"
 router.get("/", (req, res) => {
   db.find()
     .then((posts) => {
-      let sortedPosts = posts.map((post) => {
-        let array = post.images.split(",");
-        return { ...post, images: array };
-      });
+      
 
-      res.status(200).json(sortedPosts);
+      res.status(200).json(posts);
     })
     .catch((err) => {
       res
@@ -27,8 +24,8 @@ router.get("/:postId", validatePostId, (req, res) => {
 
   db.findById(postId)
     .then((post) => {
-      let array = post.images.split(",");
-      res.status(200).json({ ...post, images: array });
+     
+      res.status(200).json(post);
     })
     .catch((err) => {
       res
@@ -43,12 +40,9 @@ router.get("/user/:id", validateUserId, (req, res) => {
 
   db.findByUserId(userId)
     .then((userPosts) => {
-      let sortedPosts = userPosts.map((post) => {
-        let array = post.images.split(",");
-        return { ...post, images: array };
-      });
+      
 
-      res.status(200).json(sortedPosts);
+      res.status(200).json(userPosts);
     })
     .catch((err) => {
       res.status(500).json({
@@ -63,15 +57,10 @@ router.post("/", validatePost, (req, res) => {
 
   db.insert(post)
     .then((newPost) => {
-      let array = newPost.images.split(",");
+      
       res.status(201).json({
         newPost: {
-          id: newPost.id,
-          title: newPost.title,
-          description: newPost.description,
-          is_public: newPost.is_public,
-          user_id: newPost.user_id,
-          images: array,
+          newPost,
         },
       });
     })
@@ -88,11 +77,9 @@ router.put("/:postId",validatePostId, (req, res) => {
 
   db.update(changes, postId)
     .then((updatedPost) => {
-      let array = updatedPost.images.split(",");
       res.status(200).json({
         updatedPost: {
-          ...updatedPost,
-          images: array,
+          updatedPost
         },
       });
     })
