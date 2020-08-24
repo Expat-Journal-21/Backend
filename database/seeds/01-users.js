@@ -2,6 +2,7 @@ exports.seed = function (knex) {
   // Inserts seed entries
   return knex("users").insert([
     {
+      
       username: "Test User",
       name: "Test Name",
       email: "testtest123@gmail.com",
