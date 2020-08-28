@@ -9,6 +9,7 @@ exports.up = function(knex) {
       tbl.boolean("is_public").notNullable().defaultTo(false)
 
       tbl.integer("user_id")
+      
       .notNullable()
       .references('users.id')
       .onUpdate('CASCADE')

@@ -1,8 +1,9 @@
+const knexcleaner = require("knex-cleaner")
 
 exports.seed = function(knex) {
   // Deletes ALL existing entries
-  return knex('posts').del()
-    .then(function () {
-      return knex('users').del();
-    });
+
+  return knexcleaner.clean(knex, {
+    ignoreTables: ['knex_migrations', 'knex_migrations_lock']
+  } )
 };

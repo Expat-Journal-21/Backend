@@ -5,12 +5,7 @@ const db = require("../models/posts-model");
 router.get("/", (req, res) => {
   db.findByIfPublic()
     .then((posts) => {
-      let sortedPosts = posts.map((post) => {
-        let array = post.images.split(",");
-        return { ...post, images: array };
-      });
-
-      res.status(200).json(sortedPosts);
+      res.status(200).json(posts);
     })
     .catch((err) => {
       res
