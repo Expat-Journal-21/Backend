@@ -64,6 +64,7 @@ If the **Username** or **Email** is already in use, it will respond with:
 Example User being registered
 
 {
+    "name": "Test User Name"
     "username": "user",
     "email": "email@email.com",
     "password": "yoursecretpassword"
